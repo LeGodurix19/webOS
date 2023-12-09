@@ -6,10 +6,10 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z-k*m0!s39+3&%3skm=ptg=x7xqan+%@qy+c2!3v$i8xkb5(mw'
-DEBUG = True
+DEBUG = os.getenv('DEBUG', default=False)
 ALLOWED_HOSTS = []
-ROOT_URLCONF = os.getenv('PROJECT_NAME') + '.urls'
-WSGI_APPLICATION = os.getenv('PROJECT_NAME') + '.wsgi.application'
+ROOT_URLCONF = 'app.urls'
+WSGI_APPLICATION = 'app.wsgi.application'
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -51,7 +51,7 @@ TEMPLATES = [
     },
 ]
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Ajoutez cette ligne
+    os.path.join(BASE_DIR, 'static'),
 ]
 DATABASES = {
         'default': {
