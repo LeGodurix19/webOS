@@ -6,14 +6,10 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      DB_ENGINE : ${DB_ENGINE}
-      DB_NAME : ${DB_NAME}
-      DB_USER : ${DB_USER}
-      DB_PASSWORD : ${DB_PASSWORD}
-      DB_HOST : ${DB_HOST}
-      DB_PORT : ${DB_PORT}
-      PROJECT_NAME : ${PROJECT_NAME}
-      DEBUG : ${DEBUG}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}  # Specify the superuser password here
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "${DB_PORT}:5432"
 

@@ -1,0 +1,299 @@
+@import '_keyframes.scss';
+
+$timer: 0.3s;
+
+body{
+    user-select: none;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #e3e3e3;
+
+}
+
+//Class for each window
+.window{
+    z-index: 49;
+    animation-name: pop_up;
+    animation-duration: $timer;
+    position: absolute;
+    width: 40vw;
+    height: 30vh;
+    border-radius: 10px;
+    border-color: #000000;
+    background: #e0e0e0;
+    box-shadow:  10px 10px 20px #c5c5c5,
+                -10px -10px 20px #c5c5c5;
+
+    .header_nav{
+        cursor: grab;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        // background-color: blue;
+        border-radius: 10px 10px 0px 0px;
+        &:active{
+            cursor: grabbing;
+        }
+        .header_nav__red_button, .header_nav__orange_button, .header_nav__green_button{
+            animation-name: pop_up;
+            animation-duration: $timer;
+            cursor: pointer;
+            position: absolute;
+            top: calc(50% - 5px);
+            width: 10px;
+            height: 10px;
+            border-radius: 25px;
+        }
+        .header_nav__red_button{
+            left: 5px;
+            background-color: red;
+        }
+        .header_nav__orange_button{
+            left: 25px;
+            background-color: orange;
+        }
+        .header_nav__green_button{
+            left: 45px;
+            background-color: green;
+        }
+        .header_nav__title{
+            position: absolute;
+            right: 0;
+            width: calc(100% - 60px);
+            height: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .content_window{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 30px);
+        // background-color: yellow;
+        border-radius: 0px 0px 10px 10px;
+        .content_window__datas{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            overflow: scroll;
+            // margin: 10px;
+        }
+        .content_window__down_left, .content_window__down_right, .content_window__down_middle, .content_window__middle_right, .content_window__middle_left, .content_window__up_left, .content_window__up_right , .content_window__up_middle {
+            position: absolute;
+        }
+
+        .content_window__down_left{
+            cursor: sw-resize;
+            bottom: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+        }
+        .content_window__down_right{
+            cursor:se-resize;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+        }
+        .content_window__down_middle{
+            cursor:s-resize;
+            bottom: 0;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: 10px;
+        }
+        .content_window__middle_right{
+            cursor:e-resize;
+            top: -20px;
+            right: 0px;
+            width: 10px;
+            height: calc(100% + 10px);
+        }
+        .content_window__middle_left{
+            cursor:w-resize;
+            top: -20px;
+            left: 0px;
+            width: 10px;
+            height: calc(100% + 10px);
+        }
+        .content_window__up_left{
+            cursor: nw-resize;
+            top: -30px;
+            left: 0;
+            width: 10px;
+            height: 10px;
+        }
+        .content_window__up_right{
+            cursor:ne-resize;
+            top: -30px;
+            right: 0;
+            width: 10px;
+            height: 10px;
+        }
+        .content_window__up_middle{
+            cursor:n-resize;
+            top: -30px;
+            left: 10px;
+            width: calc(100% - 20px);
+            height: 10px;
+        }
+        /*.content_window__up_middle, .content_window__middle_left, .content_window__middle_right, .content_window__down_middle{
+            background-color: red;
+        }
+        .content_window__down_left, .content_window__up_right, .content_window__up_left, .content_window__down_right {
+            background-color: pink;
+        }*/
+    }
+}
+
+//Class for the navbar
+.navbar {
+    z-index: 50;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .navbar__down{
+        min-width: 100px;
+        height: 100%;
+        border-radius: 10px;
+        background: #d7d7d7;
+        box-shadow:  10px 10px 20px #c5c5c5,
+                    -10px -10px 20px #c5c5c5;
+        border-radius: 5px 5px 5px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .header_nav__icon{
+            .navbar__img{
+                width: 30px;
+                height: 30px;
+                margin: 0 5px 0 5px;
+            }
+            p{
+                z-index: 1;
+                display: none;
+                width: 76px;
+            }
+            &:hover{
+                p{
+                    z-index: 1;
+                    animation-name: pop_up__navbar;
+                    animation-duration: $timer;
+                    position: absolute;
+                    top: -50px;
+                    left: calc(50% - 38px);
+                    display: block;
+                    background-color: black;
+                    color: white;
+                    border-radius: 3px;
+                }
+                .navbar__img{
+                    animation-name: im_here;
+                    animation-duration: $timer;
+                    animation-fill-mode: forwards;
+                }
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+//Icon on the desktop
+.desktop__icon{
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    .desktop__icon__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        height: 90px;
+        width: 90px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+
+.folder__icon{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    .folder__icon__container{
+        .folder__icon__text{
+            width: 75px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .folder__icon__container__img{
+            width: 50px;
+            height: 50px;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+        width: 75px;
+        margin: 5px;
+    }
+}
+
+
+//Animations for class window
+.go_down {
+    position: absolute;
+    animation-name: let_go_down;
+    animation-duration: $timer;
+    animation-fill-mode: forwards;
+}
+.go_up {
+    animation-name: let_go_up;
+    animation-duration: $timer;
+}
+.let_go_remove {
+    position: absolute;
+    animation-name: let_go_remove;
+    animation-duration: $timer;
+    animation-fill-mode: forwards;
+}
+.let_go_big {
+    position: absolute;
+    animation-name: let_go_big;
+    animation-duration: $timer;
+    animation-fill-mode: forwards;
+}
+.let_go_small {
+    position: absolute;
+    animation-name: let_go_small;
+    animation-duration: $timer;
+    animation-fill-mode: forwards;
+}

@@ -2,5 +2,5 @@ asgiref==3.7.2
 Django==4.2.8
 Pillow==10.1.0
 psycopg2==2.9.1
-
+simplejson>=3.17.0
 python-dotenv==0.19.1

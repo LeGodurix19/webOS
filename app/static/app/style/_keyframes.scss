@@ -1,0 +1,82 @@
+@keyframes pop_up {
+    from {
+        display: none;
+        width: 0;
+        height: 0;
+        color: transparent;
+    }
+    to {}
+}
+
+@keyframes pop_up__navbar {
+    from {
+        z-index: 1;
+        display: none;
+        width: 76px;
+        height: 0;
+        position: absolute;
+        top: -25px;
+        color: transparent;
+    }
+    to {}
+}
+
+@keyframes let_go_down {
+    from {}
+    to {
+        top: 100%;
+        left:50%;
+        display: none;
+        width: 0;
+        height: 0;
+    }
+}
+@keyframes let_go_up {
+    from {
+        top: 100%;
+        left:50%;
+        display: none;
+        width: 0;
+        height: 0;
+    }
+    to {}
+}
+@keyframes let_go_remove {
+    from {}
+    to {
+        width: 0;
+        height: 0;
+        display: none;
+        color: transparent;
+
+    }
+}
+@keyframes let_go_big {
+    from {}
+    to {
+        width: 100vw;
+        height: 95vh;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes let_go_small {
+    from {
+        width: 100vw;
+        height: 95vh;
+        top: 0;
+        left: 0;
+    }
+    to {}
+}
+
+@keyframes im_here {
+    from {
+    }
+    to {
+        width: 60px;
+        height: 60px;
+        margin: 0 7px 0 7px;
+    }
+}

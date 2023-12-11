@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>webOS</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static "app/style/style.css" %}">
+        <script type="text/javascript">
+            var mouse_down = false, mouse_pos = 0, posX = 0, posY = 0, square = 'square';
+        </script>
+        <script type="module" src="{% static "app/javascript/setup.js" %}"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar__down" id="navbar"></div>
+        </nav>
+        <div class="desktop__icon" id="desktop__icon"></div>
+        <script type="module">
+            import { myFolder, myWindow } from '{% static "app/javascript/myWindow.class.js" %}'
+            {% for directory in directories %}
+                var new_window
+                {% if directory.name != "Desktop" %}
+                    (new myFolder('{{ directory.name }}', '{{ directory.desc }}', '{{ directory.id }}', '{% static "" %}{{ directory.icon }}', '{% static "" %}{{ directory.icon }}', {{ directory.projects|safe }})).createIconDesktop();
+                {% else %}
+                    {% for elem in directory.projects %}
+                        (new myWindow('{{ elem.name }}', '{{ elem.name }}', '{{ elem.slug }}', '{% static "" %}{{ elem.icon }}', '{% static "" %}{{ elem.icon }}')).createIconDesktop();
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </script>
+    </body>
+</html>
