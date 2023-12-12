@@ -9,4 +9,5 @@ app_name = os.getenv('PROJECT_NAME')
 
 urlpatterns = [
     path('', index, name='view'),
+    path('admin/', admin.site.urls),
 ]

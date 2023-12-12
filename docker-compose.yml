@@ -3,22 +3,21 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}  # Specify the superuser password here
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data:/var/lib/postgresql/data
     ports:
-      - "${DB_PORT}:5432"
+      - "5432:5432"
 
   web:
-    restart: always
     build:
       context: .
-      dockerfile: Dockerfile
-    command: bash -c "sleep 10 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      dockerfile: Dockerfile  # Replace with the path to your Dockerfile if it's in a different location
+    command: bash -c "sleep 10 && python manage.py migrate && python manage.py createsuperuserwithpassword --username ${ADMIN_USR} --password ${ADMIN_PWD} --email ${ADMIN_MAIL} --preserve && python manage.py runserver 0.0.0.0:8000"
+
     volumes:
       - .:/code
     ports:
@@ -26,11 +25,12 @@ services:
     depends_on:
       - db
     environment:
-      DB_ENGINE : ${DB_ENGINE}
-      DB_NAME : ${DB_NAME}
-      DB_USER : ${DB_USER}
-      DB_PASSWORD : ${DB_PASSWORD}
-      DB_HOST : ${DB_HOST}
-      DB_PORT : ${DB_PORT}
-      PROJECT_NAME : ${PROJECT_NAME}
-      DEBUG : ${DEBUG}
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: db
+      DB_PORT: 5432
+      TMP: ${PROJECT_NAME}
+volumes:
+  postgres_data:
