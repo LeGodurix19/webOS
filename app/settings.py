@@ -16,6 +16,8 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ORIGIN_WHITELIST = ["*"]
+CSRF_TRUSTED_ORIGINS = ['*']
 # AUTH_USER_MODEL = 'app.CustomUser'
 INSTALLED_APPS = [
     'django.contrib.admin',
