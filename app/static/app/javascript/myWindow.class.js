@@ -214,14 +214,14 @@ export class myFolder extends myWindow {
                     iconFile.classList.add('folder__icon__container');
                     const   iconImage = document.createElement('img');
                             iconImage.classList.add('folder__icon__container__img');
-                            iconImage.src = '/cv/static/app/' + project_inArray.icon;
+                            iconImage.src = '/static/app/' + project_inArray.icon;
                             iconImage.alt = 'icon';
                     const   textContainer = document.createElement('div');
                             textContainer.classList.add('folder__icon__container__text');
                             textContainer.textContent = project_inArray.name;
             iconFile.append(iconImage, textContainer);
             iconFile.addEventListener('click', (event) => {
-                var element = new myWindow(project_inArray.name, project_inArray.content, project_inArray.slug, '/cv/static/app/' + project_inArray.icon, '/cv/static/app/' + project_inArray.icon);
+                var element = new myWindow(project_inArray.name, project_inArray.content, project_inArray.slug, '/static/app/' + project_inArray.icon, '/static/app/' + project_inArray.icon);
                 setTimeout(function (element){
                     element.createWindow();
                     element.change_index(event);
