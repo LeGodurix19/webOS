@@ -20,10 +20,10 @@
             {% for directory in directories %}
                 var new_window
                 {% if directory.name != "Desktop" %}
-                    (new myFolder('{{ directory.name }}', '{{ directory.desc }}', '{{ directory.id }}', '{% static "img" %}{{ directory.icon }}', '{% static "img" %}{{ directory.icon }}', {{ directory.projects|safe }})).createIconDesktop();
+                    (new myFolder('{{ directory.name }}', '{{ directory.desc }}', '{{ directory.id }}', '{% static "app/" %}{{ directory.icon }}', '{% static "app/" %}{{ directory.icon }}', {{ directory.projects|safe }})).createIconDesktop();
                 {% else %}
                     {% for elem in directory.projects %}
-                        (new myWindow('{{ elem.name }}', '{{ elem.name }}', '{{ elem.slug }}', '{% static "img" %}{{ elem.icon }}', '{% static "img" %}{{ elem.icon }}')).createIconDesktop();
+                        (new myWindow('{{ elem.name }}', '{{ elem.name }}', '{{ elem.slug }}', '{% static "app/" %}{{ elem.icon }}', '{% static "app/" %}{{ elem.icon }}')).createIconDesktop();
                     {% endfor %}
                 {% endif %}
             {% endfor %}
